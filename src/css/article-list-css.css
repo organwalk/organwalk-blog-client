@@ -1,0 +1,28 @@
+.title{
+    font-size: 1.2rem;
+    font-weight: 600
+}
+.title:hover{
+    color: #409EFF;
+    cursor: pointer;
+}
+.tag {
+    margin: 0 10px 10px 0;
+    border: none;
+}
+.tag-light{
+    color: #333;
+    background-color: #f3f4f6;
+}
+.tag-light:hover{
+    color: #409EFF;
+    cursor: pointer;
+}
+.tag-dark{
+    color: #ffffff;
+    background-color: #282a36;
+}
+.tag-dark:hover{
+    color: #409EFF;
+    cursor: pointer;
+}

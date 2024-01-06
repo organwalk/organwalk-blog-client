@@ -4,3 +4,11 @@ export function scrollToOriginal(){
         behavior: 'smooth'
     });
 }
+
+export function scrollToTop(){
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+
+}

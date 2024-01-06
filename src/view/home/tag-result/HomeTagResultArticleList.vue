@@ -1,8 +1,6 @@
 <script setup>
 import ObcArticleList from "@/components/article/Obc-ArticleList.vue";
 import ObcHeadArticleList from "@/components/article/Obc-Head-ArticleList.vue";
-import ObcCheckBoxArticleList from "@/components/article/Obc-CheckBox-ArticleList.vue";
-import HomeInformation from "@/view/home/HomeInformation.vue";
 import ObcColArticleList from "@/components/article/Obc-Col-ArticleList.vue";
 import {useKeywordStore} from "@/store/store";
 import {computed, ref, watch} from "vue";
@@ -62,39 +60,14 @@ const clickTag = (tagName) => {
 </script>
 
 <template>
-  <div class="home-list" v-show="!isSearch">
-    <div class="timeline-list">
-      <ObcHeadArticleList content="Timeline"/>
-      <el-row :gutter="30">
-        <ObcColArticleList v-for="(data, index) in dataList" :key="index">
-          <ObcArticleList :data="data" @clickTag="clickTag"/>
-        </ObcColArticleList>
-      </el-row>
-    </div>
-    <div class="all-blog-list">
-      <ObcHeadArticleList content="All Blog"/>
-      <div style="margin: 0 0 15px 0">
-        <ObcCheckBoxArticleList :types="['Random', 'Tech', 'Utopia', 'Walk']"/>
-      </div>
-      <el-row :gutter="30">
-        <ObcColArticleList v-for="(data, index) in dataList" :key="index">
-          <ObcArticleList :data="data" @clickTag="clickTag"/>
-        </ObcColArticleList>
-      </el-row>
-    </div>
-    <div class="footer-info">
-      <HomeInformation/>
-    </div>
-  </div>
-  <div class="search-result-list" v-show="isSearch">
-    <ObcHeadArticleList :content="keyword"/>
+  <div class="tag-result-list" v-show="!isSearch">
+    <ObcHeadArticleList content="Result"/>
     <el-row :gutter="30">
       <ObcColArticleList v-for="(data, index) in dataList" :key="index">
         <ObcArticleList :data="data" @clickTag="clickTag"/>
       </ObcColArticleList>
     </el-row>
   </div>
-
 </template>
 
 <style scoped>

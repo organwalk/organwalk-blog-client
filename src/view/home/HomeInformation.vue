@@ -2,6 +2,7 @@
 import gmail from "@/assets/icon/gmail.png";
 import github from "@/assets/icon/github.png";
 import bilibili from "@/assets/icon/bilibili.png";
+import zhihu from "@/assets/icon/zhihu.png";
 import ObcHeadArticleList from "@/components/article/Obc-Head-ArticleList.vue";
 
 const toGithub = () => {
@@ -11,6 +12,10 @@ const toGithub = () => {
 const toBilibili = () => {
   window.location.href = 'https://space.bilibili.com/38163549'
 }
+
+const toZhiHu = () => {
+  window.location.href = 'https://www.zhihu.com/people/shitsugo'
+}
 </script>
 
 <template>
@@ -18,7 +23,7 @@ const toBilibili = () => {
     <ObcHeadArticleList content="The Following Contact Information"/>
     <el-card shadow="never" style="border-radius: 15px;background-color: transparent">
       <el-row :gutter="30">
-        <el-col :xs="8" :sm="6" :md="4" :lg="8" :xl="1" align="center">
+        <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6" align="center">
           <div class="div-icon">
             <el-tooltip
                 effect="dark"
@@ -30,11 +35,14 @@ const toBilibili = () => {
             </el-tooltip>
           </div>
         </el-col>
-        <el-col :xs="8" :sm="6" :md="4" :lg="8" :xl="1" align="center">
+        <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6" align="center">
           <div class="div-icon"><el-image class="icon" :src="github" @click="toGithub" /></div>
         </el-col>
-        <el-col :xs="8" :sm="6" :md="4" :lg="8" :xl="1" align="center">
+        <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6" align="center">
           <div class="div-icon"><el-image class="icon" :src="bilibili" @click="toBilibili"/></div>
+        </el-col>
+        <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6" align="center">
+          <div class="div-icon"><el-image class="icon" :src="zhihu" @click="toZhiHu"/></div>
         </el-col>
       </el-row>
     </el-card>
