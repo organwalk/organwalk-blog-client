@@ -2,7 +2,7 @@
 import {ref, defineProps, computed, watchEffect} from "vue";
 import {Search} from '@element-plus/icons-vue'
 import {useIsDarkStore, useKeywordStore} from "@/store/store";
-import {inputDebounce} from "@/utils/functionUtils"
+import {inputDebounce} from "@/utils/aopUtils"
 
 const props = defineProps({
   tagName: String

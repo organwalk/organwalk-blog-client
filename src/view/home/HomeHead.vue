@@ -2,7 +2,7 @@
 import {ref} from "vue";
 import { Search } from '@element-plus/icons-vue'
 import {useKeywordStore} from "@/store/store";
-import {inputDebounce} from "@/utils/functionUtils"
+import {inputDebounce} from "@/utils/aopUtils"
 const keyword = ref('')
 
 // 将输入的关键词纳入状态管理

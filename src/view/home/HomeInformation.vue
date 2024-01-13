@@ -20,7 +20,7 @@ const toZhiHu = () => {
 
 <template>
   <div>
-    <ObcHeadArticleList content="The Following Contact Information"/>
+    <ObcHeadArticleList content="Information"/>
     <el-card shadow="never" style="border-radius: 15px;background-color: transparent">
       <el-row :gutter="30">
         <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6" align="center">

@@ -11,6 +11,8 @@ const ICP = () => {
 const home = () => {
   route.push('/')
 }
+
+
 </script>
 
 <template>
