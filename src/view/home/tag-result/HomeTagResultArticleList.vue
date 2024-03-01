@@ -1,6 +1,5 @@
 <script setup>
 import ObcArticleList from "@/components/article/Obc-ArticleList.vue";
-import ObcHeadArticleList from "@/components/article/Obc-Head-ArticleList.vue";
 import ObcColArticleList from "@/components/article/Obc-Col-ArticleList.vue";
 import {useKeywordStore} from "@/store/store";
 import {computed, ref, watch} from "vue";
@@ -54,14 +53,13 @@ watch(keyword, (newVal, oldValue) => {
 // 进入Tag分类专区
 const route = useRouter()
 const clickTag = (tagName) => {
-  route.push('/tag/' + tagName)
+  route.push({path:'/tag/' +tagName, query:{load: Date.now()}})
   scrollToTop()
 }
 </script>
 
 <template>
   <div class="tag-result-list" v-show="!isSearch">
-    <ObcHeadArticleList content="Result"/>
     <el-row :gutter="30">
       <ObcColArticleList v-for="(data, index) in dataList" :key="index">
         <ObcArticleList :data="data" @clickTag="clickTag"/>

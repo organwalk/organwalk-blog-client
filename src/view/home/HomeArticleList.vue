@@ -2,7 +2,6 @@
 import ObcArticleList from "@/components/article/Obc-ArticleList.vue";
 import ObcHeadArticleList from "@/components/article/Obc-Head-ArticleList.vue";
 import ObcCheckBoxArticleList from "@/components/article/Obc-CheckBox-ArticleList.vue";
-import HomeInformation from "@/view/home/HomeInformation.vue";
 import ObcColArticleList from "@/components/article/Obc-Col-ArticleList.vue";
 import {useKeywordStore} from "@/store/store";
 import {computed, ref, watch} from "vue";
@@ -44,46 +43,30 @@ const keyword = computed(() => keywordStore.keyword)
 const isSearch = ref(false)
 watch(keyword, (newVal, oldValue) => {
   if (newVal !== oldValue){
-    if (newVal === ""){
-      isSearch.value = false
-    }else {
-      isSearch.value = true
-      console.log(newVal)
-    }
+    isSearch.value = newVal !== "";
   }
 })
 
 // 进入Tag分类专区
 const route = useRouter()
 const clickTag = (tagName) => {
-  route.push('/tag/' + tagName)
+  route.push({path:'/tag/' +tagName, query:{load: Date.now()}})
   scrollToTop()
 }
 </script>
 
 <template>
   <div class="home-list" v-show="!isSearch">
-    <div class="timeline-list">
-      <ObcHeadArticleList content="Timeline"/>
-      <el-row :gutter="30">
-        <ObcColArticleList v-for="(data, index) in dataList" :key="index">
-          <ObcArticleList :data="data" @clickTag="clickTag"/>
-        </ObcColArticleList>
-      </el-row>
-    </div>
     <div class="all-blog-list">
       <ObcHeadArticleList content="All Blog"/>
       <div style="margin: 0 0 15px 0">
-        <ObcCheckBoxArticleList :types="['Random', 'Tech', 'Utopia', 'Walk']"/>
+        <ObcCheckBoxArticleList :types="['TimeLine', 'Tech', 'Utopia', 'Walk']"/>
       </div>
       <el-row :gutter="30">
         <ObcColArticleList v-for="(data, index) in dataList" :key="index">
           <ObcArticleList :data="data" @clickTag="clickTag"/>
         </ObcColArticleList>
       </el-row>
-    </div>
-    <div class="footer-info">
-      <HomeInformation/>
     </div>
   </div>
   <div class="search-result-list" v-show="isSearch">

@@ -7,12 +7,14 @@ const routes = [
     {
         path : '/tag/:tagName',
         name : 'homeTagResult',
-        component: ()=>import('@/view/home/tag-result/HomeTagResultView.vue')
+        component: ()=>import('@/view/home/tag-result/HomeTagResultView.vue'),
+        key: Date.now()
     },
     {
         path : '/article/:articleId',
         name : 'homeArticleDetail',
-        component: ()=>import('@/view/home/article-detail/HomeArticleDetailView.vue')
+        component: ()=>import('@/view/home/article-detail/HomeArticleDetailView.vue'),
+        key: Date.now()
     },
 ]
 

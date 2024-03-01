@@ -1,7 +1,7 @@
 <script setup>
-import {computed, onBeforeMount, ref} from "vue";
+import {onBeforeMount, ref} from "vue";
 import axios from "axios";
-import {useIsDarkStore, useMarkdownView} from "@/store/store";
+import {useMarkdownView} from "@/store/store";
 import {withLoading} from "@/utils/aopUtils";
 
 const content = ref('')
@@ -17,11 +17,6 @@ const loadingData = withLoading(loading, async () => {
   })
 })
 
-
-// 暗黑模式
-const isDarkStore = useIsDarkStore()
-const isDark = computed(() => isDarkStore.isDark)
-
 onBeforeMount(async () => {
   await loadingData()
 })
@@ -33,14 +28,12 @@ onBeforeMount(async () => {
 <template>
   <el-card
       :body-style="{paddingLeft:'0px', paddingRight:'0px'}"
-      :style="{backgroundColor:isDark === 'true' ? '#1c1c1d' : '#ffffff'}"
       shadow="never" style="border-radius: 0;border: none" ref="scrollOut">
     <el-row>
       <el-skeleton :rows="20"
                    style="margin-left: 15px;margin-right: 15px"  v-if="loading" animated />
     </el-row>
-    <v-md-preview :text="content" :style="{color:isDark === 'true' ? '#b2b2b2' : '#000'}"
-                  ref="markdownView" id="md-article"  v-show="!loading"></v-md-preview>
+    <v-md-preview :text="content" ref="markdownView" id="md-article"  v-show="!loading" />
   </el-card>
 </template>
 

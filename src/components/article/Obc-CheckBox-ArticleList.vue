@@ -1,9 +1,16 @@
 <script setup>
-import {defineProps, ref} from "vue"
+import {defineProps, ref, watchEffect} from "vue"
+import {useNowTypeStore} from "@/store/store";
 defineProps({
   types:Array
 })
 const nowType = ref(0)
+
+const nowTypeStore = useNowTypeStore()
+
+watchEffect(() => {
+  nowTypeStore.setNowType(nowType.value)
+})
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 <script setup>
 // 目录组件
-import {computed, nextTick, ref, watchEffect, defineProps, defineEmits} from "vue";
-import {useIsDarkStore, useMarkdownView} from "@/store/store";
+import {computed, nextTick, ref, watchEffect, defineProps, defineEmits, onMounted, watch} from "vue";
+import {useMarkdownView, useNowAnchorTitle} from "@/store/store";
 import {scrollingDebounce} from "@/utils/aopUtils";
 import {Close} from "@element-plus/icons-vue";
 
@@ -58,8 +58,6 @@ watchEffect(async () => {
 const handleAnchorClick = (anchor, markdownView) => {
   nowTitle.value = anchor.title
   setTimeout(() => {
-    close() //关闭目录组件
-
     // 跳转当前浏览视窗至指定目录标题
     const heading = markdownView.$el.querySelector(`[data-v-md-line="${anchor.lineIndex}"]`);
     if (heading) {
@@ -71,8 +69,8 @@ const handleAnchorClick = (anchor, markdownView) => {
         block:'start'
       });
     }
-  }, 100)
-
+  }, 0)
+  close() //关闭目录组件
 }
 
 // 监听滚动事件，获取当前标题
@@ -99,6 +97,13 @@ window.addEventListener('scroll', scrollingDebounce(() => {
   }
 }));
 
+const nowAnchorTitleStore = useNowAnchorTitle()
+watch(nowTitle, (newVal, oldValue) => {
+  if (newVal !== oldValue){
+    nowAnchorTitleStore.setNowAnchorTitle(newVal)
+  }
+})
+
 
 // 媒体查询，更改相应样式
 const drawerSize = ref('100%')
@@ -110,24 +115,21 @@ const handleMediaQueryChange = (mediaQuery) => {
     drawerSize.value = '45%'
   }
 };
-handleMediaQueryChange(mediaQuery);
+onMounted(() => {
+  handleMediaQueryChange(mediaQuery);
+})
 
 
-// 暗黑模式
-const isDarkStore = useIsDarkStore()
-const isDark = computed(() => isDarkStore.isDark)
 </script>
 
 <template>
   <el-drawer
       v-model="showAnchor"
-      :with-header="false" :size="drawerSize" :lock-scroll="false" :before-close="close"
-      :style="{backgroundColor:isDark === 'true' ? '#1c1c1d' : '#ffffff',
-      color:isDark === 'true' ? '#b2b2b2' : '#000'}"
+      :with-header="false" :size="drawerSize" :lock-scroll="true" :before-close="close"
       direction="rtl" style="padding-left: 10px;user-select: none"
   >
     <el-affix :offset="0">
-      <div :style="{backgroundColor:isDark === 'true' ? '#1c1c1d' : '#ffffff'}">
+      <div style="background-color: #ffffff">
         <el-row>
           <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
             <h3 style="margin-top: 5px;color: #606266">文章目录</h3>

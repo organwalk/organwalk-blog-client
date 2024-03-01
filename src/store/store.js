@@ -9,18 +9,26 @@ export const useKeywordStore = defineStore('keyword', () => {
     return { keyword, setKeyword}
 })
 
-export const useIsDarkStore = defineStore('isDark', () => {
-    const isDark = ref()
-    function setIsDark(realIsDark){
-        isDark.value = realIsDark
-    }
-    return {isDark, setIsDark}
-})
-
 export const useMarkdownView = defineStore('markdownView', () => {
     const markdownView = ref()
     function setMarkdownView(realMarkdownView){
         markdownView.value = realMarkdownView
     }
     return {markdownView, setMarkdownView}
+})
+
+export const useNowAnchorTitle = defineStore('nowAnchorTitle', () => {
+    const nowAnchorTitle = ref()
+    function setNowAnchorTitle(realVal){
+        nowAnchorTitle.value = realVal
+    }
+    return {nowAnchorTitle, setNowAnchorTitle}
+})
+
+export const useNowTypeStore = defineStore('nowType', () => {
+    const nowType = ref()
+    function setNowType(realType){
+        nowType.value = realType
+    }
+    return{nowType, setNowType}
 })

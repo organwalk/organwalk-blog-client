@@ -1,33 +1,36 @@
 <script setup>
 import {useRouter} from "vue-router";
-import {useIsDarkStore} from "@/store/store";
-import {computed} from "vue";
+import {useNowAnchorTitle} from "@/store/store";
+import {computed, ref, watch} from "vue";
 
 const route = useRouter()
 const home = () => {
   route.push('/')
 }
+const nowAnchorTitleStore = useNowAnchorTitle()
+const nowAnchorTitle = ref('阅读文章详细')
+const newAnchorTitle = computed(() => nowAnchorTitleStore.nowAnchorTitle)
+watch(newAnchorTitle, (newVal, oldValue) => {
+  if (newVal !== oldValue){
+    nowAnchorTitle.value = newVal
+  }
+})
 
-// 暗黑模式
-const isDarkStore = useIsDarkStore()
-const isDark = computed(() => isDarkStore.isDark)
 </script>
 
 <template>
   <el-affix :offset="0">
     <el-card :body-style="{paddingTop:'20px', paddingBottom:'20px'}"
-             :style="{backgroundColor:isDark === 'true' ? '#1c1c1d' : '#ffffff',
-             color:isDark === 'true' ? '#b2b2b2' : '#000'}"
              shadow="never" style="border-radius: 0;border-left: none;border-right: none;border-top: none;">
       <el-row>
         <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
           <el-tooltip
               effect="dark"
-              content="使用 Devbox 升级您的开发环境,使开发环境具有隔离特征"
+              :content=nowAnchorTitle
               placement="bottom"
               trigger="click"
           >
-            <span class="article-title">使用 Devbox 升级您的开发环境,使开发环境具有隔离特征</span>
+            <span class="article-title">{{ nowAnchorTitle }}</span>
           </el-tooltip>
         </el-col>
         <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12" align="right">
