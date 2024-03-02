@@ -14,8 +14,9 @@ const clickTag = (tagName) => {
 // 进入文章详情
 const route = useRouter()
 const clickArticle = (id) => {
-  route.push({path:'/article/' +id, query: {load: Date.now()}})
-  scrollToTop()
+  route.push({path:'/article/' +id, query: {load: Date.now()}}).then(() => {
+    scrollToTop()
+  })
 }
 </script>
 

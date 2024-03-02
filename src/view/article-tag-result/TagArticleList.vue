@@ -1,10 +1,11 @@
 <script setup>
-import ObcArticleList from "@/components/article/Obc-ArticleList.vue";
-import ObcColArticleList from "@/components/article/Obc-Col-ArticleList.vue";
 import {useKeywordStore} from "@/store/store";
 import {computed, ref, watch} from "vue";
 import {useRouter} from "vue-router";
 import {scrollToTop} from "@/utils/affixUtils";
+import {defineAsyncComponent} from "vue";
+const ObcArticleList = defineAsyncComponent(() => import("@/components/article/Obc-ArticleList.vue"))
+const ObcColArticleList = defineAsyncComponent(() => import("@/components/container/Obc-Col-ArticleList.vue"))
 
 const dataList = [
   {

@@ -1,12 +1,13 @@
 <script setup>
-import ObcArticleList from "@/components/article/Obc-ArticleList.vue";
-import ObcHeadArticleList from "@/components/article/Obc-Head-ArticleList.vue";
-import ObcCheckBoxArticleList from "@/components/article/Obc-CheckBox-ArticleList.vue";
-import ObcColArticleList from "@/components/article/Obc-Col-ArticleList.vue";
 import {useKeywordStore} from "@/store/store";
 import {computed, ref, watch} from "vue";
 import {useRouter} from "vue-router";
 import {scrollToTop} from "@/utils/affixUtils";
+import {defineAsyncComponent} from "vue";
+const ObcArticleList = defineAsyncComponent(() => import("@/components/article/Obc-ArticleList.vue"))
+const ObcHeadArticleList = defineAsyncComponent(() => import("@/components/container/Obc-Head-ArticleList.vue"))
+const ObcCheckBoxArticleList = defineAsyncComponent(() => import("@/components/check-box/Obc-CheckBox-ArticleList.vue"))
+const ObcColArticleList = defineAsyncComponent(() => import("@/components/container/Obc-Col-ArticleList.vue"))
 
 const dataList = [
   {
@@ -37,7 +38,7 @@ const dataList = [
 
 
 // 呈现搜索列表
-// 从状态管理种获取搜索关键词
+// 从状态管理中获取搜索关键词
 const keywordStore = useKeywordStore()
 const keyword = computed(() => keywordStore.keyword)
 const isSearch = ref(false)
@@ -50,13 +51,14 @@ watch(keyword, (newVal, oldValue) => {
 // 进入Tag分类专区
 const route = useRouter()
 const clickTag = (tagName) => {
-  route.push({path:'/tag/' +tagName, query:{load: Date.now()}})
-  scrollToTop()
+  route.push({path:'/tag/' +tagName, query:{load: Date.now()}}).then(() => {
+    scrollToTop()
+  })
 }
 </script>
 
 <template>
-  <div class="home-list" v-show="!isSearch">
+  <div class="home-list" v-if="!isSearch">
     <div class="all-blog-list">
       <ObcHeadArticleList content="All Blog"/>
       <div style="margin: 0 0 15px 0">
@@ -69,7 +71,7 @@ const clickTag = (tagName) => {
       </el-row>
     </div>
   </div>
-  <div class="search-result-list" v-show="isSearch">
+  <div class="search-result-list" v-if="isSearch">
     <ObcHeadArticleList :content="keyword"/>
     <el-row :gutter="30">
       <ObcColArticleList v-for="(data, index) in dataList" :key="index">

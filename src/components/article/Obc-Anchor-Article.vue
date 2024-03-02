@@ -157,6 +157,7 @@ onMounted(() => {
   padding: 10px 15px;
   margin-top: -5px;
   margin-bottom: -5px;
+  margin-left: -15px;
   background-color: #f3f4f6;
   border-radius: 5px;
 }

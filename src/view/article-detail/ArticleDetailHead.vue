@@ -30,7 +30,7 @@ watch(newAnchorTitle, (newVal, oldValue) => {
               placement="bottom"
               trigger="click"
           >
-            <span class="article-title">{{ nowAnchorTitle }}</span>
+            <span class="article-title"><span style="font-weight: bolder">|</span>&nbsp;{{ nowAnchorTitle }}</span>
           </el-tooltip>
         </el-col>
         <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12" align="right">
