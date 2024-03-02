@@ -1,8 +1,8 @@
 <script setup>
 import {defineAsyncComponent} from "vue";
+import ArticleDetail from "@/view/article-detail/ArticleDetail.vue";
 const ArticleDetailHead = defineAsyncComponent(() => import("@/view/article-detail/ArticleDetailHead.vue"))
 const HomeFooter = defineAsyncComponent(() => import("@/view/home/HomeFooter.vue"))
-const ArticleDetail = defineAsyncComponent(() => import("@/view/article-detail/ArticleDetail.vue"))
 </script>
 
 <template>

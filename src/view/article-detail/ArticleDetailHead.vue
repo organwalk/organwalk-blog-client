@@ -20,7 +20,7 @@ watch(newAnchorTitle, (newVal, oldValue) => {
 
 <template>
   <el-affix :offset="0">
-    <el-card :body-style="{paddingTop:'20px', paddingBottom:'20px'}"
+    <el-card :body-style="{paddingTop:'15px', paddingBottom:'10px'}"
              shadow="never" style="border-radius: 0;border-left: none;border-right: none;border-top: none;">
       <el-row>
         <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">

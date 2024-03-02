@@ -3,8 +3,10 @@ import {onBeforeMount, ref} from "vue";
 import axios from "axios";
 import {useMarkdownView} from "@/store/store";
 import {withLoading} from "@/utils/aopUtils";
+import ObcSkeleton from "@/components/container/Obc-Skeleton.vue";
 
 const content = ref('')
+const createDateTime = '2023-03-21'
 const markdownView = ref()
 const markdownStore = useMarkdownView()
 
@@ -29,11 +31,10 @@ onBeforeMount(async () => {
   <el-card
       :body-style="{paddingLeft:'0px', paddingRight:'0px'}"
       shadow="never" style="border-radius: 0;border: none" ref="scrollOut">
-    <el-row>
-      <el-skeleton :rows="20"
-                   style="margin-left: 15px;margin-right: 15px"  v-if="loading" animated />
-    </el-row>
+    <obc-skeleton :loading="loading"/>
     <v-md-preview :text="content" ref="markdownView" id="md-article"  v-show="!loading" />
+    <br/><span style="margin-left: 20px;color: #606266">编辑于 {{ createDateTime }}</span>
   </el-card>
+
 </template>
 

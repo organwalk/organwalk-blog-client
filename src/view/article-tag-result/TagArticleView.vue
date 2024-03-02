@@ -1,8 +1,8 @@
 <script setup>
 import {useRouter} from "vue-router";
 import {defineAsyncComponent} from "vue";
+import TagArticleList from "@/view/article-tag-result/TagArticleList.vue";
 const TagHead = defineAsyncComponent(() => import("@/view/article-tag-result/TagHead.vue"))
-const TagArticleList = defineAsyncComponent(() => import("@/view/article-tag-result/TagArticleList.vue"))
 const HomeFooter = defineAsyncComponent(() => import("@/view/home/HomeFooter.vue"))
 const ObcContainerArticleList = defineAsyncComponent(() => import("@/components/container/Obc-Container-ArticleList.vue"))
 

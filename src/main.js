@@ -9,6 +9,7 @@ import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
 import '@kangc/v-md-editor/lib/theme/style/github.css';
 // noinspection NpmUsedModulesInstalled
 import hljs from 'highlight.js';
+import 'element-plus/dist/index.css'
 
 VMdPreview.use(githubTheme, {
     Hljs: hljs,

@@ -37,10 +37,10 @@ export function scrollingDebounce(fn) {
 }
 
 export function withLoading(loading, fn){
-    return async () => {
+    return async function () {
         loading.value = true;
         try {
-            await fn();
+            await fn.apply(this, arguments);
         } finally {
             loading.value = false;
         }

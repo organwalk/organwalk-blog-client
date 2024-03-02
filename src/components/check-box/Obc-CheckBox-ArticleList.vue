@@ -7,7 +7,6 @@ defineProps({
 const nowType = ref(0)
 
 const nowTypeStore = useNowTypeStore()
-
 watchEffect(() => {
   nowTypeStore.setNowType(nowType.value)
 })

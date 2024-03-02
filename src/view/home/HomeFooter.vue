@@ -38,15 +38,15 @@ const nowType = computed(() => nowTypeStore.nowType)
     <el-col :xs="0" :sm="0" :md="8" :lg="8" :xl="8" />
   </el-row>
   <el-divider/>
-  <el-row style="font-size: 0.9rem;">
+  <el-row style="font-size: 0.9rem;color: #606266">
     <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8" align="center">
-      <span style="user-select: none;cursor: pointer" @click="home">© OrganWalk. All rights reserved.</span>
+      <span style="user-select: none;cursor: pointer" @click="home">© OrganWalk. All rights reserved.</span><br/>
     </el-col>
     <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8" align="center">
-      <span class="link" @click="beiAn" >粤公网安备 44133002100240号</span>
+      <span class="link" @click="beiAn" >粤公网安备 44133002100240号</span><br/>
     </el-col>
     <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8" align="center">
-      <span class="link" @click="ICP" >粤ICP备2023035858号</span>
+      <span class="link" @click="ICP" >粤ICP备2023035858号</span><br/>
     </el-col>
   </el-row><br/>
 </template>
