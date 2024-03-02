@@ -24,6 +24,11 @@ const routes = [
         name: 'articleTypeList',
         component:() => import('@/view/article-type-list/ArticleTypeListView.vue'),
         meta: 'Organwalk-Type'
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'notFound',
+        component: () => import('@/view/article-not-found/NotFoundPage.vue')
     }
 ]
 
