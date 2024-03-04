@@ -31,7 +31,7 @@ onMounted(() => {
   <el-row>
     <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" >
       <el-input v-model="keyword" :prefix-icon="Search"
-                @input="getKeyword"
+                @input="getKeyword" maxlength="30"
                 style="font-size: 16px" placeholder="搜索博客文章" size="large" clearable/>
     </el-col>
   </el-row><br/>

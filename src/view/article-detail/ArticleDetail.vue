@@ -31,7 +31,7 @@ onBeforeMount(async () => {
   <el-card
       :body-style="{paddingLeft:'0px', paddingRight:'0px'}"
       shadow="never" style="border-radius: 0;border: none" ref="scrollOut">
-    <obc-skeleton :loading="loading"/>
+    <obc-skeleton v-if="loading"/>
     <v-md-preview :text="content" ref="markdownView" id="md-article"  v-show="!loading" />
     <br/><span style="margin-left: 20px;color: #606266">编辑于 {{ createDateTime }}</span>
   </el-card>

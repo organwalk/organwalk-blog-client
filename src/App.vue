@@ -1,8 +1,8 @@
 <template>
   <router-view />
-  <el-backtop style="color:#333;" :right="20" :bottom="220"/>
+  <el-backtop style="color:#333;" :right="20" :bottom="160"/>
   <el-backtop style="color:#333;"
-              :right="20" :bottom="160"
+              :right="20" :bottom="100"
               v-if="showAnchorButton"
               @click="openAnchor">
     <el-icon>

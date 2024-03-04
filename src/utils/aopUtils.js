@@ -24,10 +24,7 @@ export function scrollingDebounce(fn) {
     return () => {
         if (!isScrolling) {
             isScrolling = true;
-
-            // 这里执行 scroll 事件处理逻辑
-            fn();
-
+            fn.apply(this, arguments);
             clearTimeout(timeout);
             timeout = setTimeout(() => {
                 isScrolling = false;

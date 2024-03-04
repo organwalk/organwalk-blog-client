@@ -3,7 +3,7 @@ import {ElMessage} from "element-plus";
 
 const request = (config) => {
     const instance = axios.create({
-        baseURL:'http://localhost:8081/api',
+        baseURL:'http://192.168.84.160:8081/api',
         timeout: 100000
     })
 

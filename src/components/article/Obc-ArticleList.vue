@@ -21,7 +21,7 @@ const clickArticle = (id) => {
 </script>
 
 <template>
-  <h3 class="title" @click="clickArticle(data['id'])">{{ data['name'] }}</h3>
+  <h5 class="title" @click="clickArticle(data['id'])">{{ data['name'] }}</h5>
   <span style="font-size: 1rem;">{{ data['outline'] }}</span>
   <div style="margin: 20px 0;">
     <el-tag v-for="(tag, tagIndex) in data['tags']" :key="tagIndex"

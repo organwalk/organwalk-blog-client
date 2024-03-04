@@ -7,7 +7,7 @@ const route = useRouter()
 
 <template>
 <obc-container-article-list align="center">
-  <el-result icon="info" title="Organwalk">
+  <el-result icon="info" title="OrganWalk">
     <template #sub-title>
       <span>来到了不存在的岛屿</span>
     </template>

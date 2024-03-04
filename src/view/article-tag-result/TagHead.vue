@@ -50,7 +50,6 @@ onMounted(() => {
                 style="font-size: 16px" placeholder="搜索包含该标签的文章" size="large" clearable/>
     </el-col>
   </el-row>
-  <br/>
 </template>
 
 <style scoped>

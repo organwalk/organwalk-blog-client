@@ -1,10 +1,9 @@
 <script setup>
 import {onMounted, ref} from "vue";
 import { Search } from '@element-plus/icons-vue'
-import {useKeywordStore, useNowTypeStore} from "@/store/store";
+import {useKeywordStore} from "@/store/store";
 import {inputDebounce} from "@/utils/aopUtils"
 import {useRouter} from "vue-router";
-import {ElMessage} from "element-plus";
 const keyword = ref('')
 
 // 将输入的关键词纳入状态管理
@@ -15,7 +14,6 @@ const getKeyword = inputDebounce((word) => {
 
 
 // 获取当前类别
-const nowTypeStore = useNowTypeStore()
 const typeMap = {
   "1":"Tech",
   "2":"Utopia",
@@ -31,11 +29,6 @@ onMounted(() => {
   }else {
     fontSize.value = '9rem'
   }
-
-  if (!nowTypeStore.nowType){
-    ElMessage.warning('请重新选择类别')
-    route.back()
-  }
 })
 
 </script>
@@ -43,7 +36,7 @@ onMounted(() => {
 <template>
   <el-row>
     <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24" >
-      <h1 style="margin: 30px 0;user-select: none;word-wrap: break-word;" :style="{fontSize:fontSize}" v-html="typeMap[nowTypeStore.nowType]"/>
+      <h1 style="margin: 30px 0;user-select: none;word-wrap: break-word;" :style="{fontSize:fontSize}" v-html="typeMap[route.currentRoute.value.params['typeId']]"/>
     </el-col>
   </el-row>
   <el-row>
@@ -52,7 +45,7 @@ onMounted(() => {
                 @input="getKeyword"
                 style="font-size: 16px" placeholder="搜索该类别下的文章" size="large" clearable/>
     </el-col>
-  </el-row><br/>
+  </el-row>
 </template>
 
 <style scoped>
